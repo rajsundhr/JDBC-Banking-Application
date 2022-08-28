@@ -1,7 +1,7 @@
 
 public class Transaction {
          
-		 int t_id;
+         int t_id;
          String type;
          double balance;
          double amount;
@@ -21,12 +21,12 @@ public class Transaction {
     		this.balance = balance;
     	}
 
-		public void show() {
-			
-			System.out.format("Transaction Type:%-25s   ", type);
-			System.out.format("Transaction Amount:%.4f   ", amount);
-			System.out.format("Balance:%.2f   ", balance);
-			System.out.println();
+	public void show() {
+		
+		System.out.format("Transaction Type:%-25s   ", type);
+		System.out.format("Transaction Amount:%.4f   ", amount);
+		System.out.format("Balance:%.2f   ", balance);
+		System.out.println();
 		}
        
          
