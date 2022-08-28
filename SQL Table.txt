@@ -1,0 +1,17 @@
+use Banking;
+
+create table customer(
+c_id int primary key  ,
+name varchar(20),
+en_pwd varchar(30),
+AcNo long ,
+balance double(20,5) );
+
+create table transaction(
+t_id int primary key auto_increment ,
+c_id int ,
+type varchar(30),
+amount double(20,5),
+balance double(20,5),
+constraint fk_constratint foreign key (c_id) references customer(c_id)
+on delete cascade );
