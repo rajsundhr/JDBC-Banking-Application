@@ -62,7 +62,6 @@ public class BankingApp {
 							System.out.println("Oh! Wrong Password: "+(count)+" attempts only left");
 					  } 
 					}
-					
 					if(count==0)
 						break;
 			        Login(customer);
@@ -74,7 +73,6 @@ public class BankingApp {
 			
 			default: System.out.println("Invalid input\nTry again");
 		}
-		
 		} while(choice!=5);
 	}
 
@@ -129,24 +127,24 @@ public class BankingApp {
 			        	Check_update(customer);}
 			        break;
 			case 3: System.out.println("Enter an amount to Deposit");
-	                amount = scan.nextDouble();
-	        	    customer.balance += amount;
-	        	    jdbc.Addtransaction(customer,"Cash Deposit",amount);
-	        	    System.out.println("Rs."+amount+" Deposited Successfully"+"\nNewbalance is "+customer.balance);
-	        	    Check_update(customer);
-	        	    break;
+	               		 amount = scan.nextDouble();
+	        	   	 customer.balance += amount;
+	        	    	jdbc.Addtransaction(customer,"Cash Deposit",amount);
+	        	   	 System.out.println("Rs."+amount+" Deposited Successfully"+"\nNewbalance is "+customer.balance);
+	        	    	Check_update(customer);
+	        	    	break;
 			case 4: System.out.println("Enter Account number to which money transferred");
-	                account = scan.nextLong();
-	                transact = jdbc.getCustomer(account);
+	               		 account = scan.nextLong();
+	               		 transact = jdbc.getCustomer(account);
 					if (transact==null) {
 						System.out.println("Wrong Account Number\nTry again");
 					    break; }
-	                System.out.println("Enter an amount to transfer");
+	                	System.out.println("Enter an amount to transfer");
 			        amount = scan.nextDouble();
-	                if(customer.balance-amount<2000) {
-	        	    System.out.println("Entered Amount is incorrect, Minbalance Rs.2000 should be maintained\nTry again");
-	                 }
-	                else {
+	                	if(customer.balance-amount<2000) {
+				   System.out.println("Entered Amount is incorrect, Minbalance Rs.2000 should be maintained\nTry again");
+	                      }
+	                    else {
 	        	    customer.balance -= amount;
 	        	    transact.balance += amount;
 	        	    type = "CashTransfer To "+transact.AcNo;
@@ -156,19 +154,19 @@ public class BankingApp {
 	        	    System.out.println("Rs."+amount+" Deposited Successfully to "+transact.AcNo+"\nYour Newbalance is "+customer.balance);
 	        	    Check_update(customer);
 	        	    }
-	                break;
+	                      break;
 			case 5: System.out.println("**********************************************************************************************");
-	                System.out.println("Customer Name : "+customer.name);
-	                System.out.println("Account Number: "+customer.AcNo);
-	                System.out.println("Balance       : "+customer.balance);
-	                System.out.println("**********************************************************************************************");
-	                System.out.println("All your Transactions  : ");
-	                List<Transaction> t_list = jdbc.getAllTransaction(customer);
-	                int t_No=1;
-	                for(Transaction t:t_list) {
+	                	System.out.println("Customer Name : "+customer.name);
+	               		 System.out.println("Account Number: "+customer.AcNo);
+	                	System.out.println("Balance       : "+customer.balance);
+	                	System.out.println("**********************************************************************************************");
+	               		 System.out.println("All your Transactions  : ");
+	               		 List<Transaction> t_list = jdbc.getAllTransaction(customer);
+	                	int t_No=1;
+	               		 for(Transaction t:t_list) {
 	                	System.out.format("Transaction :%3d   ", t_No++);
 	                	t.show();
-	                }  
+	               		 }  
 			        break;
 			case 6:  int count =3;
 			        while(count!=0) {
@@ -193,9 +191,9 @@ public class BankingApp {
 			        customer.en_pwd=password;
 			        jdbc.changepwd(customer);
 			        System.out.println("Password changed Successfully");
-	        	    break;
+	        	        break;
 			case 7: System.out.println("Logout Successfully\nRedirect to Main Menu");
-    	            return;     
+    	                        return;     
 			default: System.out.println("Invalid input\nTry again");
 		     }
 	  }while(choice!=7);
@@ -207,10 +205,8 @@ public class BankingApp {
 			System.out.println("Maintanance Fee of Rs.100 deducted");
 			customer.balance -= 100;
 			jdbc.Addtransaction(customer, "Maintenance Fee", 100);
-		}
-		
+		}	
 	}
-
 	private void addCustomer()  {
 		String name,password;
 		System.out.println("Welcome to Add customer portal");
@@ -226,8 +222,7 @@ public class BankingApp {
 	}
 	private void addCustomer(Customer customer)  {
 		jdbc.addCustomer(customer);
-		jdbc.Addtransaction(customer,"Opening",customer.balance);
-		
+		jdbc.Addtransaction(customer,"Opening",customer.balance);	
 	}
 
 	private String Encryption(String password) {
@@ -298,7 +293,7 @@ public class BankingApp {
 				return 0;
 		}
 		if( l<2 || n<2 || u<2 )
-		    return 0;
+		        return 0;
 		else 
 			return 1;
 	}
